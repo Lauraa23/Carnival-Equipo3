@@ -8,69 +8,443 @@
 * {
   margin: 0;
   font-family: "Alata", sans-serif;
-  background-color: var(--building-color1);
   font-size: 36px;
 }
 
+body{
+    background-color: var(--building-color1); /* tuve que poner el color de fondo directamente al body sino daba error en la página de instrucciones */
+    transition: 0.2s;
+  }
+
+.content{
+  display: flex;
+  flex-direction: column;
+  margin-top: 141px;
+  z-index: 10;
+  transition: 0.2s;
+}
+
 #logoImage {
-  width: 360px;
-  margin-bottom: 104px;
+  width: 50%;
+  max-width: 600px;
+  min-width: 360px;
   margin: auto;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
+  margin-top: 104px;
+  align-items: center;
 }
+
 .menuButton {
   color: var(--building-color1);
   background-color: var(--building-color2);
   border-radius: 58px;
-  max-width: 278px;
+  width: 50%;
+  min-width: 278px;
   padding: 22px 0;
   border: none;
   margin-bottom: 15px;
 }
 
-#topLeftImage {
-  position: relative;
-  transform: rotate(170deg);
-  top: -5%;
-  left: -5%;
-}
 
-#estrellitaAbajo {
+#topLeftImage {
+  background-color:transparent;
+  position: absolute;
+  transform: rotate(200deg);
+  top: -10%;
+  left: -5%;
+  width: 150px;
+  z-index: 0;
+  transition: 0.1s;
+  /* animation: ;*/
+  /* animation-duration: ;*/
 }
 
 #bottomRightImage {
   position: fixed;
-  bottom: 5%;
-  right: 5%;
+  bottom: -10%;
+  right: -15%;
+  transition: 0.1s;
+  /* animation: */
+  /* animation-duration: ;*/
 }
 
-/* Instrucciones */
+#estrellita, #estrellita1, #estrellita2, #estrellitaAbajo  {
+  display: none;
+  transition: 0.1s;
+}
+
+/* ANIMACIONES INICIO*/
+/* .menuButton:hover{} */
+
+
+
+
+
+
+
+
+
+
+
+/* INSTRUCCIONES */
 
 #fondo {
   background-color: var(--building-color2);
   color: var(--building-color1);
+  height: 100vh;
 }
 
-.cajaInstrucciones {
-  width: 300px;
-  padding: 20px;
-  border: 2px;
-  background-color: white;
-  margin: 20px auto;
+header {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  padding-top: 24px;
+}
+
+img {
+  background-color: transparent;
+}
+
+header .atras{
+  position: absolute;
+  background-color: transparent;
+  
+  transition: 0.2s;
+  
 }
 
 h1 {
   font-family: "Abril Fatface", serif;
   color: white;
+  background-color: transparent;
+  margin: auto;
+  text-align: center;
+  }
+
+.cajaInstrucciones {
+  min-width: 300px;
+  max-width: 909px;
+  width: 60%;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: var(--building-color1);
+  margin: 20px auto;
 }
 
 p {
-  font-family: "Abril Fatface", serif;
+  font-size: 16px;
   color: var(--building-color2);
-  line-height: 1.5;
-  margin: -0;
+  text-align:justify;
+  padding-bottom: 10px;
+  
 }
+#instruccionesImg {
+  display: flex;
+  margin: auto;
+  min-width: 349px;
+  max-width: 476px;
+  width: 60%;
+}
+
+#garabato1 {
+  display: none;
+  transition: 0.2s;
+}
+
+#garabato2{
+  background-color: transparent;
+  position: fixed;
+  bottom: -10%;
+  right: -5%;
+  width: 150px;
+  z-index: 1;
+  transition: 0.3s;
+  /* animation: */
+  /* animation-duration: ;*/
+}
+
+
+/* ANIMACIONES INSTRUCCIONES*/
+/* .atras:hover {}*/
+
+
+
+
+
+
+
+
+
+
+/* GAME */
+
+header {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 10% 0 10%;
+}
+
+.scoreboard{
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 25px;
+  transition: 0.2s;
+}
+
+.textoContador{
+  font-family:  "Abril Fatface", serif;
+  color: black;
+  font-size: 32px;
+  margin: 0 10px 20px 10px;
+  padding: 0;
+}
+
+span{
+  font-family:  "Abril Fatface", serif;
+  font-size: 96px;
+}
+
+.manosAnimacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  height: 245px;
+  position: relative;
+  transition: 0.2s;
+
+}
+
+.cirluloFondo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1; 
+  max-width: 300px;
+  min-width: 246px !important;
+  width: 70%;
+}
+
+.manoA {
+  transform: scaleX(-1) rotate(-50deg);
+  margin-right: 30px;
+  min-width: 102px;
+  max-width: 135px;
+  width: 30%;
+  /* animation: */
+  /* animation-duration: ;*/
+}
+
+.manoB{
+  transform: rotate(-50deg);
+  margin-left: 30px;
+  min-width: 102px;
+  max-width: 135px;
+  width: 30%;
+  /* animation: */
+  /* animation-duration: ;*/
+}
+
+.cajaManos{
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  min-width: 280px;
+  max-width: 531px;
+  width: 80%;
+  margin-top: 70px;
+  margin-bottom: 25px;
+  transition: 0.2s;
+}
+
+#tijera {
+  width: 91px;
+  align-self:flex-end;
+  transition: 0.2s;
+}
+
+#piedra {
+  width: 91px;
+  align-self: flex-start;
+  transition: 0.2s;
+}
+
+#papel {
+  height: 122px;
+  align-self:flex-end;
+  transition: 0.2s;
+}
+
+
+.cajaTiempo{
+  border: solid 1px black;
+  border-radius: 60px;
+  min-width: 300px;
+  max-width: 812px;
+  width: 90%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+
+
+/* ANIMACIONES GAME*/
+/* .reiniciar:hover */
+
+
+
+
+/* #piedra:hover, #papel:hover, #tijera:hover {}  */
+
+
+
+
+
+
+
+
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 1000px) {
+  /* INICIO */
+  
+  body {
+    max-width: 1080px;
+    margin: auto;
+  }
+
+  .content {
+    margin-top: 80px;
+  }
+
+  #topLeftImage{
+    display:flex;
+    position: absolute;
+    transform: rotate(200deg);
+    top: -5%;
+    left: -1%;
+    width: 153px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+  
+  #estrellita, #estrellita1, #estrellita2, #estrellitaAbajo  {
+    display: flex;
+  }
+  
+  #estrellita{
+    position: fixed;
+    top: 50px;
+    right: 200px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+
+  #bottomRightImage {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    z-index: -1;
+  }
+  /* INSTRUCCIONES */
+
+    #garabato1 {
+    display:flex;
+    position: absolute;
+    transform: rotate(200deg);
+    top: -5%;
+    left: -1%;
+    width: 153px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+  #fondo{
+    max-width: 1080px !important;
+    margin: 0 auto;
+  }
+
+  header .atras{
+    position: relative;
+    margin: 0;
+
+  }
+  
+  .cajaInstrucciones{
+    padding: 32px;
+    width: 75%;
+  }
+
+
+  p{
+    font-size: 20px;
+    text-align: center;
+  }
+  #estrellita1{
+    position: fixed;
+    top: 550px;
+    left: 250px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+
+  #estrellita2{
+    width: 58px;
+    position: fixed;
+    top: 500px;
+    left: 350px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+  
+  #garabato2{
+    background-color: transparent;
+    position: fixed;
+    bottom: -16%;
+    right: -1%;
+    width: 305px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+
+  /* GAME */
+  .scoreboard{
+    margin-top: -30px;
+  }
+  .manosAnimacion {
+    margin-top: 90px;
+    
+}
+.cajaManos{
+  margin-top: 100px;
+}
+
+#tijera, #piedra {
+  width: 120px;
+}
+
+#papel{
+  height: 163px;
+}
+
+}
+
+
+
