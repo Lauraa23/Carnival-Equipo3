@@ -3,37 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/game.css" />
-    <title>Document</title>
-  </head>
-  
-    <header >
-      <div>
-        <img src="Recursos/Back.svg" alt="" id="atras">
-        <img src="Recursos/Restart.svg"  alt="" id="reiniciar">
-      </div>
-    </header>
-    <body>
-      <div class="scoreboard">
-        <p>Tú</p>
-        <span id="score1">0</span>
-        <span id="score2">0</span>
-        <p>Bot</p>
-      </div>
-      <div>
-        <img class="manoA" src="Recursos/Mano.svg"  alt="" />
-        <img class="manoB" src="Recursos/Mano.svg"  alt="" />
-        <img class="cirluloFondo" src="Recursos/CirculoFondo.svg"  alt="" />
-       
-      </div>
-      <div>
-        <img src="Recursos/Piedra.svg" id="piedra">
-         <img src="Recursos/Papel.svg" id="papel">
-         <img src="Recursos/Tijera.svg" id="tijera">
-      </div>
-      <div>
-        <div id="time">Time</div>
-      </div>
-    </body>
-  
+    <title>Piedra Papel o Tijera</title> <!--Cambié el nombre del doc -->
+    <link rel="icon" href="Recursos/Tijera.svg">  <!--Añadí la imagen de pestaña -->
+    <link rel="stylesheet" href="styles.css" />
+    </head>
+
+  <header>
+      <a href="index.html"><img src="Recursos/Back.svg" alt="Botón Atrás" id="atras" /></a> <!-- añadí link a inicio-->
+      <a><img src="Recursos/Restart.svg" alt="Botón de Reinicio" id="reiniciar" /></a>
+  </header>
+  <body>
+    <div class="scoreboard">
+      <p class="textoContador">Tú</p>
+      <span id="score1">0</span>
+      <p class="textoContador">:</p>
+      <span id="score2">0</span>
+      <p class="textoContador">Bot</p>
+    </div>
+    <div class="manosAnimacion"> <!-- añadí una clase-->
+      <img class="manoA" src="Recursos/Mano.svg" alt="" />
+      <img class="manoB" src="Recursos/Mano.svg" alt="" />
+      <img class="cirluloFondo" src="Recursos/CirculoFondo.svg" alt="" />
+    </div>
+    <div class="cajaManos">
+      <img src="Recursos/Tijera.svg" id="tijera" />
+      <img src="Recursos/Piedra.svg" id="piedra" />
+      <img src="Recursos/Papel.svg" id="papel" />
+    </div>
+    <div class="cajaTiempo">
+      <h2 id="time">00:05</h2> <!--Cambié el div por un h2-->
+    </div>
+  </body>
 </html>
