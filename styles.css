@@ -302,9 +302,10 @@ span{
 /* .reiniciar:hover */
 
 
-#reiniciar{
-  animation: spin 3s linear infinite;
+#reiniciar:hover{
+  animation: spin 3s linear;
 cursor: pointer;
+
 }
 @keyframes spin {
   to {
@@ -321,7 +322,7 @@ cursor: pointer;
   transition: transform 0.25s;
 }
 #tijera:hover,#piedra:hover,#papel:hover{
-  --escala: 1.5;
+  --escala: 1.4;
   cursor: pointer;
 }
 
