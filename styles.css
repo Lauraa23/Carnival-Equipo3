@@ -302,12 +302,28 @@ span{
 /* .reiniciar:hover */
 
 
-
+#reiniciar{
+  animation: spin 3s linear infinite;
+cursor: pointer;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+   
+  }
+}
 
 /* #piedra:hover, #papel:hover, #tijera:hover {}  */
 
-
-
+#tijera,#piedra,#papel{
+  transform: scale(var(--escala, 1));
+  /*efecto zoom*/
+  transition: transform 0.25s;
+}
+#tijera:hover,#piedra:hover,#papel:hover{
+  --escala: 1.5;
+  cursor: pointer;
+}
 
 
 
