@@ -8,6 +8,82 @@
 * {
   margin: 0;
   font-family: "Alata", sans-serif;
+  background-color: var(--building-color1);
+  font-size: 36px;
+}
+
+#logoImage {
+  width: 360px;
+  margin-bottom: 104px;
+  margin: auto;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+.menuButton {
+  color: var(--building-color1);
+  background-color: var(--building-color2);
+  border-radius: 58px;
+  max-width: 278px;
+  padding: 22px 0;
+  border: none;
+  margin-bottom: 15px;
+}
+
+#topLeftImage {
+  position: relative;
+  transform: rotate(170deg);
+  top: -5%;
+  left: -5%;
+}
+
+#estrellitaAbajo {
+}
+
+#bottomRightImage {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+
+/* Instrucciones */
+
+#fondo {
+  background-color: var(--building-color2);
+  color: var(--building-color1);
+}
+
+.cajaInstrucciones {
+  width: 300px;
+  padding: 20px;
+  border: 2px;
+  background-color: white;
+  margin: 20px auto;
+}
+
+h1 {
+  font-family: "Abril Fatface", serif;
+  color: white;
+}
+
+p {
+  font-family: "Abril Fatface", serif;
+  color: var(--building-color2);
+  line-height: 1.5;
+  margin: -0;
+}
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alata&display=swap");
+
+:root {
+  --building-color1: #f8eeec;
+  --building-color2: #f96b4f;
+}
+
+* {
+  margin: 0;
+  font-family: "Alata", sans-serif;
   font-size: 36px;
 }
 
@@ -79,7 +155,37 @@ body{
 
 /* ANIMACIONES INICIO*/
 /* .menuButton:hover{} */
+.menuButton {
+  z-index: 1;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: hsl(236, 32%, 26%);
+}
 
+.menuButton:hover {
+  cursor: pointer;
+  animation: jelly 0.5s;
+}
+
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
 
 
 
