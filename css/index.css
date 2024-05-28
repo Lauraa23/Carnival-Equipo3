@@ -34,7 +34,7 @@ body {
 .buttons {
   display: flex;
   flex-direction: column;
-  margin-top: 104px;
+  margin-top: 90px;
   align-items: center;
 }
 
@@ -79,7 +79,7 @@ body {
   width: 150px;
   z-index: 0;
   transition: 0.1s;
-  animation: tiembla 1s ease-in-out infinite;
+  animation: tiembla 0.5s ease-in-out infinite;
 }
 
 @keyframes tiembla {
@@ -110,9 +110,10 @@ body {
 
 #bottomRightImage {
   position: fixed;
-  bottom: -10%;
+  bottom: -15%;
   right: -15%;
-  transition: 0.1s;
+  transition: 0.3s ease-out;
+  z-index: -1;
   animation: rotar 10s linear infinite;
 }
 
@@ -129,7 +130,7 @@ body {
 #estrellita1,
 #estrellita2 {
   display: none;
-  transition: 0.1s;
+  
 }
 
 #garabato2 {
@@ -141,6 +142,7 @@ body {
   z-index: 1;
   transition: 0.3s;
   animation: temblar 1s ease-in-out infinite;
+
 }
 
 @keyframes temblar {
@@ -165,6 +167,8 @@ body {
   }
 }
 
+/* MEDIA QUERIES */
+
 @media only screen and (min-width: 1000px) {
   body {
     max-width: 1080px;
@@ -172,7 +176,7 @@ body {
   }
 
   .content {
-    margin-top: 80px;
+    margin-top: 70px;
   }
 
   #topLeftImage {
@@ -237,29 +241,18 @@ body {
 
   #estrellita1 {
     position: fixed;
-    top: 550px;
-    left: 250px;
+    top: 55%;
+    left: 11%;
     z-index: -1;
     animation: agrandarDisminuir 2s infinite;
   }
-
-  @keyframes agrandarDisminuir {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.5);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
+/* Eliminé una animación porque estaba repetida */
 
   #estrellita2 {
     width: 58px;
     position: fixed;
-    top: 500px;
-    left: 350px;
+    top: 50%;
+    left: 17%;
     z-index: -1;
     animation: agrandarDisminuir 2s infinite;
     animation-delay: 1s;
@@ -280,7 +273,7 @@ body {
   #bottomRightImage {
     position: fixed;
     bottom: 10%;
-    right: 10%;
+    right: 5%;
     z-index: -1;
     animation: rotar 10s linear infinite;
   }
