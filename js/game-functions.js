@@ -3,14 +3,6 @@ const scissors = 2;
 const paper = 3;
 let userChoice = 0;
 
-function goToGameView() {
-  window.location.href = "../game.html";
-}
-
-function goToRuleView() {
-  window.location.href = "../instructions.html";
-}
-
 function handUserSelection() {
   const piedra = document.getElementById("piedra");
   const tijera = document.getElementById("tijera");
@@ -60,6 +52,4 @@ function gameResult() {
   const result = determineWinner(userChoice, machineChoice);
 }
 
-
-
-export { goToGameView, goToRuleView, handUserSelection };
+export { handUserSelection };

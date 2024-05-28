@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alata&display=swap");
+
+body {
+  background-color: var(
+    --building-color1
+  ); /* tuve que poner el color de fondo directamente al body sino daba error en la página de instrucciones */
+  transition: 0.2s;
+}
+
+* {
+  margin: 0;
+  font-family: "Alata", sans-serif;
+  font-size: 36px;
+}
+
+:root {
+  --building-color1: #f8eeec;
+  --building-color2: #f96b4f;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 141px;
+  z-index: 10;
+  transition: 0.2s;
+}
+
+#logoImage {
+  width: 50%;
+  max-width: 600px;
+  min-width: 360px;
+  margin: auto;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 104px;
+  align-items: center;
+}
+
+.menuButton {
+  color: var(--building-color1);
+  background-color: var(--building-color2);
+  border-radius: 58px;
+  width: 50%;
+  min-width: 278px;
+  padding: 22px 0;
+  border: none;
+  margin-bottom: 15px;
+}
+
+.menuButton:hover {
+  cursor: pointer;
+  animation: jelly 0.5s;
+}
+
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+#topLeftImage {
+  background-color: transparent;
+  position: absolute;
+  transform: rotate(200deg);
+  top: -10%;
+  left: 0%;
+  width: 150px;
+  z-index: 0;
+  transition: 0.1s;
+  animation: tiembla 1s ease-in-out infinite;
+}
+
+@keyframes tiembla {
+  0%,
+  100% {
+    transform: rotate(200deg);
+  }
+  10%,
+  60% {
+    transform: rotate(210deg);
+  }
+  20%,
+  70% {
+    transform: rotate(190deg);
+  }
+  30%,
+  80% {
+    transform: rotate(205deg);
+  }
+  40%,
+  90% {
+    transform: rotate(195deg);
+  }
+  50% {
+    transform: rotate(200deg);
+  }
+}
+
+#bottomRightImage {
+  position: fixed;
+  bottom: -10%;
+  right: -15%;
+  transition: 0.1s;
+  animation: rotar 3.5s linear infinite;
+}
+
+@keyframes rotar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#estrellita,
+#estrellita1,
+#estrellita2 {
+  display: none;
+  transition: 0.1s;
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    max-width: 1080px;
+    margin: auto;
+  }
+  .content {
+    margin-top: 80px;
+  }
+
+  #topLeftImage {
+    display: flex;
+    position: absolute;
+    transform: rotate(200deg);
+    top: -5%;
+    left: -1%;
+    width: 153px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+
+  #estrellita,
+  #estrellita1,
+  #estrellita2,
+  #estrellitaAbajo {
+    display: flex;
+  }
+
+  #estrellita {
+    position: fixed;
+    top: 50px;
+    right: 200px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+
+  #bottomRightImage {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    z-index: -1;
+  }
+}

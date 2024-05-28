@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alata&display=swap");
+
+:root {
+  --building-color1: #f8eeec;
+  --building-color2: #f96b4f;
+}
+
+header {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 10% 0 10%;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 25px;
+  transition: 0.2s;
+}
+
+.textoContador {
+  font-family: "Abril Fatface", serif;
+  color: black;
+  font-size: 32px;
+  margin: 0 10px 20px 10px;
+  padding: 0;
+}
+
+span {
+  font-family: "Abril Fatface", serif;
+  font-size: 96px;
+}
+
+.manosAnimacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  height: 245px;
+  position: relative;
+  transition: 0.2s;
+}
+
+.cirluloFondo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  max-width: 300px;
+  min-width: 246px !important;
+  width: 70%;
+}
+
+.manoA {
+  transform: scaleX(-1) rotate(-50deg);
+  margin-right: 30px;
+  min-width: 102px;
+  max-width: 135px;
+  width: 30%;
+  /* animation: */
+  /* animation-duration: ;*/
+}
+
+.manoB {
+  transform: rotate(-50deg);
+  margin-left: 30px;
+  min-width: 102px;
+  max-width: 135px;
+  width: 30%;
+  /* animation: */
+  /* animation-duration: ;*/
+}
+
+.cajaManos {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  min-width: 280px;
+  max-width: 531px;
+  width: 80%;
+  margin-top: 70px;
+  margin-bottom: 25px;
+  transition: 0.2s;
+}
+
+#tijera {
+  width: 91px;
+  align-self: flex-end;
+  transition: 0.2s;
+}
+
+#piedra {
+  width: 91px;
+  align-self: flex-start;
+  transition: 0.2s;
+}
+
+#papel {
+  height: 122px;
+  align-self: flex-end;
+  transition: 0.2s;
+}
+
+.cajaTiempo {
+  border: solid 1px black;
+  border-radius: 60px;
+  font-family: "Abril Fatface", serif;
+  min-width: 300px;
+  max-width: 812px;
+  width: 90%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+/* ANIMACIONES ATRAS*/
+#atras {
+  transform: scale(var(--escala, 1));
+  transition: transform 0.25s;
+}
+#atras:hover {
+  --escala: 1.3;
+  cursor: pointer;
+}
+
+/* ANIMACIONES GAME*/
+/* .reiniciar:hover */
+
+#reiniciar:hover {
+  animation: spin 0.5s linear;
+  cursor: pointer;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* #piedra:hover, #papel:hover, #tijera:hover {}  */
+
+#tijera,
+#piedra,
+#papel {
+  transform: scale(var(--escala, 1));
+  /*efecto zoom*/
+  transition: transform 0.25s;
+}
+#tijera:hover,
+#piedra:hover,
+#papel:hover {
+  --escala: 1.3;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1000px) {
+  .scoreboard {
+    margin-top: -30px;
+  }
+  .manosAnimacion {
+    margin-top: 90px;
+  }
+  .cajaManos {
+    margin-top: 100px;
+  }
+
+  #tijera,
+  #piedra {
+    width: 120px;
+  }
+
+  #papel {
+    height: 163px;
+  }
+}

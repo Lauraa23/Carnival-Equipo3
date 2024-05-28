@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alata&display=swap");
+
+:root {
+  --building-color1: #f8eeec;
+  --building-color2: #f96b4f;
+}
+
+* {
+  margin: 0;
+  font-family: "Alata", sans-serif;
+  font-size: 36px;
+}
+
+#fondo {
+  background-color: var(--building-color2);
+  color: var(--building-color1);
+  height: 100vh;
+}
+
+header {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  padding-top: 24px;
+}
+
+img {
+  background-color: transparent;
+}
+
+header .atras {
+  position: absolute;
+  background-color: transparent;
+
+  transition: 0.2s;
+}
+
+h1 {
+  font-family: "Abril Fatface", serif;
+  color: white;
+  background-color: transparent;
+  margin: auto;
+  text-align: center;
+}
+
+.cajaInstrucciones {
+  min-width: 300px;
+  max-width: 909px;
+  width: 60%;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: var(--building-color1);
+  margin: 20px auto;
+}
+
+p {
+  font-size: 16px;
+  color: var(--building-color2);
+  text-align: justify;
+  padding-bottom: 10px;
+}
+#instruccionesImg {
+  display: flex;
+  margin: auto;
+  min-width: 349px;
+  max-width: 476px;
+  width: 60%;
+}
+
+#garabato1 {
+  display: none;
+  transition: 0.1s;
+}
+
+#garabato2 {
+  background-color: transparent;
+  position: fixed;
+  bottom: -10%;
+  right: -5%;
+  width: 150px;
+  z-index: 1;
+  transition: 0.3s;
+  animation: tiembla 1s ease-in-out infinite;
+}
+
+@media only screen and (min-width: 1000px) {
+  #garabato1 {
+    display: flex;
+    position: absolute;
+    transform: rotate(200deg);
+    top: -5%;
+    left: -1%;
+    width: 153px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+  #fondo {
+    max-width: 1080px !important;
+    margin: 0 auto;
+  }
+
+  header .atras {
+    position: relative;
+    margin: 0;
+  }
+
+  .cajaInstrucciones {
+    padding: 32px;
+    width: 75%;
+  }
+
+  p {
+    font-size: 20px;
+    text-align: center;
+  }
+  #estrellita1 {
+    position: fixed;
+    top: 550px;
+    left: 250px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+
+  #estrellita2 {
+    width: 58px;
+    position: fixed;
+    top: 500px;
+    left: 350px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+
+  #garabato2 {
+    background-color: transparent;
+    position: fixed;
+    bottom: -16%;
+    right: -1%;
+    width: 305px;
+    z-index: -1;
+    /* animation: */
+    /* animation-duration: ;*/
+  }
+}
