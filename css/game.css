@@ -17,8 +17,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: end;
-  margin-top: 25px;
-  transition: 0.2s;
+  margin-top: 10px;
+  transition: 0.2s ease-in-out;
 }
 
 .textoContador {
@@ -38,7 +38,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 40px;
   height: 245px;
   position: relative;
   transition: 0.2s;
@@ -82,9 +82,9 @@ span {
   min-width: 280px;
   max-width: 531px;
   width: 80%;
-  margin-top: 70px;
+  margin-top: 60px;
   margin-bottom: 25px;
-  transition: 0.2s;
+  transition: 0.2s ease-in-out;
 }
 
 #tijera {
@@ -117,6 +117,10 @@ span {
   justify-content: center;
   margin-bottom: 30px;
 }
+
+h2{
+  font-family: "Alata", sans-serif;
+}
 /* ANIMACIONES ATRAS*/
 #atras {
   transform: scale(var(--escala, 1));
@@ -131,7 +135,7 @@ span {
 /* .reiniciar:hover */
 
 #reiniciar:hover {
-  animation: spin 0.5s linear;
+  animation: spin 0.4s linear;
   cursor: pointer;
 }
 @keyframes spin {
@@ -156,15 +160,17 @@ span {
   cursor: pointer;
 }
 
+/* MEDIA QUERIES */
+
 @media only screen and (min-width: 1000px) {
   .scoreboard {
     margin-top: -30px;
   }
   .manosAnimacion {
-    margin-top: 90px;
+    margin-top: 80px;
   }
   .cajaManos {
-    margin-top: 100px;
+    margin-top: 90px;
   }
 
   #tijera,
@@ -175,4 +181,34 @@ span {
   #papel {
     height: 163px;
   }
+}
+
+
+@media only screen and (max-height: 700px) {
+  .textoContador{
+    font-size: 30px;
+    margin: 0 10px 15px 10px;
+  }
+
+  span {
+    font-size: 80px;
+  }
+
+  .manosAnimacion {
+    height: 200px;
+    margin-top: 35px;
+  }
+
+  .cirluloFondo {
+    min-width: 150px !important;
+    width: 220px;
+}
+.manoA {
+  width: 120px;
+}
+
+  .manoB {
+  width: 120px;
+}
+
 }
