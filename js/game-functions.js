@@ -2,6 +2,8 @@ const rock = 1;
 const scissors = 2;
 const paper = 3;
 let userChoice = 0;
+let userScore = 0;
+let machineScore = 0;
 
 function handUserSelection() {
   const piedra = document.getElementById("piedra");
@@ -41,9 +43,18 @@ function determineWinner(userResult, machineResult) {
     (userResult === paper && machineResult === rock)
   ) {
     alert("¡Buena elección!");
+    userScore++;
+    updateScores();
   } else {
     alert("¡Mala elección :( !");
+    machineScore++;
+    updateScores();
   }
+}
+
+function updateScores() {
+  document.getElementById("score1").textContent = userScore;
+  document.getElementById("score2").textContent = machineScore;
 }
 
 function gameResult() {
