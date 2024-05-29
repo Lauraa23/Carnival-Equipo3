@@ -9,20 +9,22 @@ function handUserSelection() {
   const papel = document.getElementById("papel");
 
   if (piedra && tijera && papel) {
-    piedra.addEventListener("click", () => {
-      userChoice = rock;
-      gameResult();
-    });
+    piedra.addEventListener("click", (event) =>
+      processUserSelection(event, rock)
+    );
+    tijera.addEventListener("click", (event) =>
+      processUserSelection(event, scissors)
+    );
+    papel.addEventListener("click", (event) =>
+      processUserSelection(event, paper)
+    );
+  }
+}
 
-    tijera.addEventListener("click", () => {
-      userChoice = scissors;
-      gameResult();
-    });
-
-    papel.addEventListener("click", () => {
-      userChoice = paper;
-      gameResult();
-    });
+function processUserSelection(event, choice) {
+  if (userScore < 3 && machineScore < 3) {
+    userChoice = choice;
+    gameResult();
   }
 }
 
@@ -40,16 +42,49 @@ function determineWinner(userResult, machineResult) {
     (userResult === scissors && machineResult === paper) ||
     (userResult === paper && machineResult === rock)
   ) {
-    alert("¡Buena elección!");
+    alert("¡Buena elección 😸!");
+    userScore++;
+    updateScores();
   } else {
-    alert("¡Mala elección :( !");
+    alert("¡Mala elección 🙀!");
+    machineScore++;
+    updateScores();
+  }
+}
+
+function updateScores() {
+  document.getElementById("score1").textContent = userScore;
+  document.getElementById("score2").textContent = machineScore;
+  roundFinalWinner();
+}
+
+function roundFinalWinner() {
+  if (userScore === 3) {
+    alert("¡Felicidades! Ganaste la ronda 😺");
+    disableGame();
+  } else if (machineScore === 3) {
+    alert("Lo siento, has perdido la ronda 😿");
+    disableGame();
+  }
+}
+
+function disableGame() {
+  const piedra = document.getElementById("piedra");
+  const papel = document.getElementById("papel");
+  const tijera = document.getElementById("tijera");
+
+  if (piedra && papel && tijera) {
+    piedra.removeEventListener("click", handUserSelection);
+    papel.removeEventListener("click", handUserSelection);
+    tijera.removeEventListener("click", handUserSelection);
   }
 }
 
 function gameResult() {
   const machineChoice = handMachineSelection();
-  console.log(machineChoice);
   const result = determineWinner(userChoice, machineChoice);
 }
+
+document.addEventListener("DOMContentLoaded", handUserSelection);
 
 export { handUserSelection };
