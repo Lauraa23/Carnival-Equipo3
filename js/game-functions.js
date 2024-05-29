@@ -70,6 +70,8 @@ function roundFinalWinner() {
   }
 }
 
+// funcion lanza confetti 
+
 function disableGame() {
   const piedra = document.getElementById("piedra");
   const papel = document.getElementById("papel");
