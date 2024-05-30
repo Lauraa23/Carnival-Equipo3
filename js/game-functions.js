@@ -101,35 +101,31 @@ function launchConfetti() {
 
 //popos
 function launchPoop() {
-  (function frame() {
-    // Crea el emoji de popo y lo lanza desde arriba
+  const duration = 5000;
+
+  const intervalId = setInterval(createEmoji, 100);
+
+  setTimeout(() => clearInterval(intervalId), duration);
+
+  function createEmoji() {
     const poop = document.createElement("div");
-    poop.classList.add("poop");
-    poop.innerText = "💩"; 
-    poop.style.position = "fixed"; // Cambiado a 'fixed' para evitar scroll
+    poop.className = "poop";
+    poop.innerText = "💩";
     poop.style.left = Math.random() * window.innerWidth + "px";
-    poop.style.top = "-50px"; 
+    poop.style.top = "-50px";
     document.body.appendChild(poop);
 
-    const poopAnimation = poop.animate([
-      { top: "-50px", opacity: 1 }, 
-      { top: "100vh", opacity: 0 } 
-    ], {
-      duration: 5000, 
-      easing: "linear", 
-      fill: "forwards",
-    });
-
-    poopAnimation.onfinish = () => {
-      poop.remove();
-    };
-
-    // Continúa lanzando popo si la animación no ha terminado
-    poopAnimation.oncancel = poopAnimation.onfinish; // Manejo para navegadores antiguos que no soportan onfinish
-
-    requestAnimationFrame(frame);
-  }());
+    poop.animate(
+      [{ top: "-50px", opacity: 2 }, { top: "100vh", opacity: 0 }],
+      {
+        duration: duration,
+        easing: "linear",
+        fill: "forwards"
+      }
+    ).onfinish = () => poop.remove();
+  }
 }
+
 //fin
 
 
