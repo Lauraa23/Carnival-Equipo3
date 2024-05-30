@@ -4,6 +4,7 @@ const paper = 3;
 let userChoice = 0;
 let userScore = 0;
 let machineScore = 0;
+let timerId;
 
 function handUserSelection() {
   const piedra = document.getElementById("piedra");
@@ -23,10 +24,36 @@ function handUserSelection() {
   }
 }
 
+// COMIENZA EL TEMPORIZADOR PARA EL TURNO
+
+function startTimer() {
+  let time = 8;
+  timerId = setInterval(() => {
+    time--;
+
+    document.getElementById("time").textContent = `00:0${time}`;
+
+    if (time <= 0) {
+      clearInterval(timerId);
+      alert("¡Tiempo agotado! Has perdido el turno 😿");
+      machineScore++;
+      updateScores();
+    }
+  }, 1000);
+}
+
+// DETIENE EL TEMPORIZADOR
+
+function stopTimer() {
+  clearInterval(timerId);
+}
+
 function processUserSelection(event, choice) {
   if (userScore < 3 && machineScore < 3) {
+    stopTimer();
     userChoice = choice;
     gameResult();
+    startTimer();
   }
 }
 
@@ -150,6 +177,9 @@ function gameResult() {
   const result = determineWinner(userChoice, machineChoice);
 }
 
-document.addEventListener("DOMContentLoaded", handUserSelection);
+document.addEventListener("DOMContentLoaded", () => {
+  handUserSelection();
+  startTimer();
+});
 
 export { handUserSelection };
