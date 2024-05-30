@@ -142,19 +142,12 @@ function launchPoop() {
 
   function createEmoji() {
     const poop = document.createElement("div");
-<<<<<<< HEAD
     poop.className = "poop";
     poop.innerText = "💩";
-=======
-    poop.classList.add("poop");
-    poop.innerText = "💩";
-    poop.style.position = "fixed"; // Cambiado a 'fixed' para evitar scroll
->>>>>>> 55a50015ed3eb6a06850af8a70a549e085f3fe26
     poop.style.left = Math.random() * window.innerWidth + "px";
     poop.style.top = "-50px";
     document.body.appendChild(poop);
 
-<<<<<<< HEAD
     poop.animate(
       [{ top: "-50px", opacity: 2 }, { top: "100vh", opacity: 0 }],
       {
@@ -164,29 +157,6 @@ function launchPoop() {
       }
     ).onfinish = () => poop.remove();
   }
-=======
-    const poopAnimation = poop.animate(
-      [
-        { top: "-50px", opacity: 1 },
-        { top: "100vh", opacity: 0 },
-      ],
-      {
-        duration: 5000,
-        easing: "linear",
-        fill: "forwards",
-      }
-    );
-
-    poopAnimation.onfinish = () => {
-      poop.remove();
-    };
-
-    // Continúa lanzando popo si la animación no ha terminado
-    poopAnimation.oncancel = poopAnimation.onfinish; // Manejo para navegadores antiguos que no soportan onfinish
-
-    requestAnimationFrame(frame);
-  })();
->>>>>>> 55a50015ed3eb6a06850af8a70a549e085f3fe26
 }
 
 //fin
