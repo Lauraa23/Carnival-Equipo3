@@ -24,10 +24,24 @@ function handUserSelection() {
 }
 
 function processUserSelection(event, choice) {
-  if (userScore < 3 && machineScore < 3) {
-    userChoice = choice;
-    gameResult();
-  }
+  //añadiendo animación de las manos(M)
+  $("#manoA").animate({ left: "-=100px" }, 200);
+  $("#manoB").animate({ left: "+=100px" }, 200, function () {
+    $("#manoA").animate({ left: "+=100px" }, 100);
+    $("#manoB").animate({ left: "-=100px" }, 100);
+    $("#manoA").animate({ left: "-=100px" }, 200);
+    $("#manoB").animate({ left: "+=100px" }, 200, function () {
+      $("#manoA").animate({ left: "+=100px" }, 100);
+      $("#manoB").animate({ left: "-=100px" }, 100,
+        function(){
+          if (userScore<3 && machineScore < 3){
+            userChoice=choice;
+            gameResult();
+          }
+        }
+      );
+    });
+  });
 }
 
 function handMachineSelection() {

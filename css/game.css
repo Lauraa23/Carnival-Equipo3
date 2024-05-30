@@ -61,6 +61,7 @@ span {
   min-width: 102px;
   max-width: 135px;
   width: 30%;
+  position: relative;/*anadí para la animacion manos(M)*/
   /* animation: */
   /* animation-duration: ;*/
 }
@@ -71,6 +72,7 @@ span {
   min-width: 102px;
   max-width: 135px;
   width: 30%;
+  position: relative;/*anadí para la animacion manos(M)*/
   /* animation: */
   /* animation-duration: ;*/
 }

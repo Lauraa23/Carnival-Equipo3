@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Piedra Papel o Tijera</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!--Añadiendo script(M) -->
     <!--Cambié el nombre del doc -->
     <link rel="icon" href="../Recursos/Tijera.svg" />
     <!--Añadí la imagen de pestaña -->
@@ -32,15 +33,17 @@
     </div>
     <div class="manosAnimacion">
       <!-- añadí una clase-->
-      <img class="manoA" src="../Recursos/Mano.svg" alt="" />
-      <img class="manoB" src="../Recursos/Mano.svg" alt="" />
+      <img id="manoA" class="manoA" src="../Recursos/Mano.svg" alt="" /><!--añadí id(M)-->
+      <img id="manoB" class="manoB" src="../Recursos/Mano.svg" alt="" /><!--añadí id(M)-->
       <img class="cirluloFondo" src="../Recursos/CirculoFondo.svg" alt="" />
     </div>
+    
     <div class="cajaManos">
-      <img src="../Recursos/Tijera.svg" id="tijera" />
-      <img src="../Recursos/Piedra.svg" id="piedra" />
-      <img src="../Recursos/Papel.svg" id="papel" />
+      <img src="../Recursos/Tijera.svg" id="tijera" class="pptInicio"/>
+      <img src="../Recursos/Piedra.svg" id="piedra" class="pptInicio"/>
+      <img src="../Recursos/Papel.svg" id="papel" class="pptInicio"/>
     </div>
+    
     <div class="cajaTiempo">
       <h2 id="time">00:05</h2>
       <!--Cambié el div por un h2-->
