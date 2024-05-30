@@ -33,6 +33,8 @@ function startTimer() {
 
     document.getElementById("time").textContent = `00:0${time}`;
 
+    document.getElementById("endSound").play();
+
     if (time <= 0) {
       clearInterval(timerId);
       alert("¡Tiempo agotado! Has perdido el turno 😿");
@@ -43,6 +45,7 @@ function startTimer() {
       }
     }
   }, 1000);
+  timerSound();
 }
 
 // DETIENE EL TEMPORIZADOR
@@ -54,6 +57,7 @@ function stopTimer() {
 function processUserSelection(event, choice) {
   if (userScore < 3 && machineScore < 3) {
     userChoice = choice;
+    soundsOfHands(choice);
     stopTimer();
     startTimer();
     gameResult();
@@ -122,69 +126,36 @@ function gameResult() {
   determineWinner(userChoice, machineChoice);
 }
 
-
-
-/*sonido cuenta regresiva*/
-document.addEventListener("DOMContentLoaded", function() {
-  const timerElement = document.getElementById('time');
-  const countdownTime = 5; // 10 minutes in seconds
-  let timeRemaining = countdownTime;
+function timerSound() {
+  const timerElement = document.getElementById("time");
+  const countDownTime = 5;
+  let timeRemaining = countDownTime;
 
   const updateTimer = () => {
-      const minutes = Math.floor(timeRemaining / 60);
-      const seconds = timeRemaining % 60;
-      timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      
-      if (timeRemaining > 0) {
-          timeRemaining--;
-      } else {
-          timerElement.classList.add('expired');
-          endSound.play();
-          clearInterval(timerInterval);
-      }
-      
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    timerElement.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+
+    if (timeRemaining > 0) {
+      timeRemaining--;
+    }
   };
+}
 
-  const timerInterval = setInterval(updateTimer, 1000);
-    updateTimer();
-});
-
-//sonido elección de piedra, papel o tijera
-document.getElementById('tijera').addEventListener('click', function() {
-  document.getElementById('soundTijera').play();
-});
-
-document.getElementById('piedra').addEventListener('click', function() {
-  document.getElementById('soundPiedra').play();
-});
-
-document.getElementById('papel').addEventListener('click', function() {
-  document.getElementById('soundPapel').play();
-});
-
-//
-     /* const tijeraElement = document.getElementById("tijera");
-      const piedraElement = document.getElementById("piedra");
-      const papelElement = document.getElementById("papel");
-
-      const soundTijera = document.getElementById("soundTijera");
-      const soundPiedra = document.getElementById("soundPiedra");
-      const soundPapel = document.getElementById("soundPapel");
-
-tijeraElement.addEventListener('click', () => {
- soundTijera.currentTime = 0; // Reinicia el audio a su inicio
- soundTijera.play(); 
-});
-
-piedraElement.addEventListener('click', () => {
-  soundPiedra.currentTime = 0;
-  soundPiedra.play();
-});
-
-papelElement.addEventListener('click', () => {
-  soundPapel.currentTime = 0;
-  soundPapel.play();
-}); */
+function soundsOfHands(choice) {
+  switch (choice) {
+    case rock:
+      document.getElementById("soundPiedra").play();
+      break;
+    case scissors:
+      document.getElementById("soundTijera").play();
+      break;
+    case paper:
+      document.getElementById("soundPapel").play();
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   handUserSelection();

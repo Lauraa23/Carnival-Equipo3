@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-// sonido botones
 document.addEventListener("DOMContentLoaded", function() {
   const buttons = document.querySelectorAll('.menuButton');
   const hoverSound = document.getElementById('hoverSound');
