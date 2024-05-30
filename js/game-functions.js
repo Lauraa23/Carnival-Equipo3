@@ -27,7 +27,7 @@ function handUserSelection() {
 // COMIENZA EL TEMPORIZADOR PARA EL TURNO
 
 function startTimer() {
-  let time = 8;
+  let time = 6;
   timerId = setInterval(() => {
     time--;
 
@@ -38,6 +38,9 @@ function startTimer() {
       alert("¡Tiempo agotado! Has perdido el turno 😿");
       machineScore++;
       updateScores();
+      if (userScore < 3 && machineScore < 3) {
+        startTimer();
+      }
     }
   }, 1000);
 }
@@ -50,10 +53,10 @@ function stopTimer() {
 
 function processUserSelection(event, choice) {
   if (userScore < 3 && machineScore < 3) {
-    stopTimer();
     userChoice = choice;
-    gameResult();
+    stopTimer();
     startTimer();
+    gameResult();
   }
 }
 
@@ -88,11 +91,14 @@ function updateScores() {
 }
 
 function roundFinalWinner() {
-  if (userScore === 3) {
-    alert("¡Felicidades! Ganaste la ronda 😺");
-    disableGame();
-  } else if (machineScore === 3) {
-    alert("Lo siento, has perdido la ronda 😿");
+  if (userScore === 3 || machineScore === 3) {
+    stopTimer();
+
+    if (userScore === 3) {
+      alert("¡Felicidades! Ganaste la ronda 😺");
+    } else if (machineScore === 3) {
+      alert("Lo siento, has perdido la ronda 😿");
+    }
     disableGame();
   }
 }
@@ -105,15 +111,15 @@ function disableGame() {
   const tijera = document.getElementById("tijera");
 
   if (piedra && papel && tijera) {
-    piedra.removeEventListener("click", handUserSelection);
-    papel.removeEventListener("click", handUserSelection);
-    tijera.removeEventListener("click", handUserSelection);
+    piedra.removeEventListener("click", processUserSelection);
+    papel.removeEventListener("click", processUserSelection);
+    tijera.removeEventListener("click", processUserSelection);
   }
 }
 
 function gameResult() {
   const machineChoice = handMachineSelection();
-  const result = determineWinner(userChoice, machineChoice);
+  determineWinner(userChoice, machineChoice);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
