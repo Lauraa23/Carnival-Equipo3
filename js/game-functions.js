@@ -11,6 +11,8 @@ function handUserSelection() {
   const tijera = document.getElementById("tijera");
   const papel = document.getElementById("papel");
 
+  
+
   if (piedra && tijera && papel) {
     piedra.addEventListener("click", (event) =>
       processUserSelection(event, rock)
