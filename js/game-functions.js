@@ -106,6 +106,7 @@ function launchPoop() {
     const poop = document.createElement("div");
     poop.classList.add("poop");
     poop.innerText = "💩"; 
+    poop.style.position = "fixed"; // Cambiado a 'fixed' para evitar scroll
     poop.style.left = Math.random() * window.innerWidth + "px";
     poop.style.top = "-50px"; 
     document.body.appendChild(poop);
