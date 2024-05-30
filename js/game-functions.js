@@ -64,13 +64,73 @@ function roundFinalWinner() {
   if (userScore === 3) {
     alert("¡Felicidades! Ganaste la ronda 😺");
     disableGame();
+    launchConfetti();
   } else if (machineScore === 3) {
     alert("Lo siento, has perdido la ronda 😿");
     disableGame();
+    launchPoop();
   }
 }
 
 // funcion lanza confetti 
+function launchConfetti() {
+  let duration = 5 * 1000;
+  let end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 3,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 }
+    });
+    confetti({
+      particleCount: 3,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 }
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  }());
+}
+
+// fin
+
+//popos
+function launchPoop() {
+  (function frame() {
+    // Crea el emoji de popo y lo lanza desde arriba
+    const poop = document.createElement("div");
+    poop.classList.add("poop");
+    poop.innerText = "💩"; 
+    poop.style.left = Math.random() * window.innerWidth + "px";
+    poop.style.top = "-50px"; 
+    document.body.appendChild(poop);
+
+    const poopAnimation = poop.animate([
+      { top: "-50px", opacity: 1 }, 
+      { top: "100vh", opacity: 0 } 
+    ], {
+      duration: 5000, 
+      easing: "linear", 
+      fill: "forwards",
+    });
+
+    poopAnimation.onfinish = () => {
+      poop.remove();
+    };
+
+    // Continúa lanzando popo si la animación no ha terminado
+    poopAnimation.oncancel = poopAnimation.onfinish; // Manejo para navegadores antiguos que no soportan onfinish
+
+    requestAnimationFrame(frame);
+  }());
+}
+//fin
+
 
 function disableGame() {
   const piedra = document.getElementById("piedra");
