@@ -37,6 +37,7 @@ function startTimer() {
 
     if (time <= 0) {
       clearInterval(timerId);
+
       alert("¡Tiempo agotado! Has perdido el turno 😿");
       machineScore++;
       updateScores();
@@ -52,6 +53,8 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(timerId);
+  endSound.pause();
+  endSound.currentTime = 0;
 }
 
 function processUserSelection(event, choice) {
