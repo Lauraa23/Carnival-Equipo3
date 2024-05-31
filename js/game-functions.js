@@ -29,17 +29,23 @@ function processUserSelection(event, choice) {
   $("#manoB").animate({ left: "+=100px" }, 200, function () {
     $("#manoA").animate({ left: "+=100px" }, 100);
     $("#manoB").animate({ left: "-=100px" }, 100);
+    //segundo golpe
     $("#manoA").animate({ left: "-=100px" }, 200);
     $("#manoB").animate({ left: "+=100px" }, 200, function () {
       $("#manoA").animate({ left: "+=100px" }, 100);
-      $("#manoB").animate({ left: "-=100px" }, 100,
+      $("#manoB").animate({ left: "-=100px" }, 100);
+      //tercer golpe
+      $("#manoA").animate({ left: "-=100px" }, 200);
+      $("#manoB").animate({ left: "+=100px" }, 200,function () {
+        $("#manoA").animate({ left: "+=100px" }, 100);
+        $("#manoB").animate({ left: "-=100px" }, 100,
         function(){
           if (userScore<3 && machineScore < 3){
             userChoice=choice;
             gameResult();
           }
         }
-      );
+    )});
     });
   });
 }
