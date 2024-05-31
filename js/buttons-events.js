@@ -5,3 +5,4 @@ document.getElementById("playButton").addEventListener("click", () => {
 document.getElementById("ruleButton").addEventListener("click", () => {
   window.location.href = "../views/instructions.html";
 });
+

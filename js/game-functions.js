@@ -92,3 +92,8 @@ function gameResult() {
 document.addEventListener("DOMContentLoaded", handUserSelection);
 
 export { handUserSelection };
+
+document.getElementById('reload').addEventListener('click', (_) => {
+  location.reload();
+  console.log('se ha reiniciado')
+})
