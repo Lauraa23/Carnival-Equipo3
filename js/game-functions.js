@@ -6,26 +6,6 @@ let userScore = 0;
 let machineScore = 0;
 let timerId;
 
-function handUserSelection() {
-  const piedra = document.getElementById("piedra");
-  const tijera = document.getElementById("tijera");
-  const papel = document.getElementById("papel");
-
-  if (piedra && tijera && papel) {
-    piedra.addEventListener("click", (event) =>
-      processUserSelection(event, rock)
-    );
-    tijera.addEventListener("click", (event) =>
-      processUserSelection(event, scissors)
-    );
-    papel.addEventListener("click", (event) =>
-      processUserSelection(event, paper)
-    );
-  }
-}
-
-// COMIENZA EL TEMPORIZADOR PARA EL TURNO
-
 function startTimer() {
   let time = 6;
   timerId = setInterval(() => {
@@ -46,10 +26,7 @@ function startTimer() {
       }
     }
   }, 1000);
-  timerSound();
 }
-
-// DETIENE EL TEMPORIZADOR
 
 function stopTimer() {
   clearInterval(timerId);
@@ -57,10 +34,45 @@ function stopTimer() {
   endSound.currentTime = 0;
 }
 
+function handUserSelection() {
+  const piedra = document.getElementById("piedra");
+  const tijera = document.getElementById("tijera");
+  const papel = document.getElementById("papel");
+
+  if (piedra && tijera && papel) {
+    piedra.addEventListener("click", (event) =>
+      processUserSelection(event, rock)
+    );
+    tijera.addEventListener("click", (event) =>
+      processUserSelection(event, scissors)
+    );
+    papel.addEventListener("click", (event) =>
+      processUserSelection(event, paper)
+    );
+  }
+}
+
+function showHandUserChoice(choice) {
+  const userHand = document.querySelector(".manoA");
+  console.log("Updating user hand image: ", choice);
+  switch (choice) {
+    case rock:
+      userHand.src = "../Recursos/Piedra.svg";
+      break;
+    case scissors:
+      userHand.src = "../Recursos/Tijera.svg";
+      break;
+    case paper:
+      userHand.src = "../Recursos/Papel.svg";
+  }
+}
+
 function processUserSelection(event, choice) {
   if (userScore < 3 && machineScore < 3) {
     userChoice = choice;
+    console.log("User choice: ", choice);
     soundsOfHands(choice);
+    showHandUserChoice(choice);
     stopTimer();
     startTimer();
     gameResult();
@@ -70,22 +82,40 @@ function processUserSelection(event, choice) {
 function handMachineSelection() {
   const possibleResult = [rock, scissors, paper];
   const randomizerResult = Math.floor(Math.random() * possibleResult.length);
-  return possibleResult[randomizerResult];
+  const machineChoice = possibleResult[randomizerResult];
+  console.log("Machine choice: ", machineChoice);
+  showHandMachineChoice(machineChoice);
+  return machineChoice;
+}
+
+function showHandMachineChoice(choice) {
+  const machineHand = document.querySelector(".manoB");
+  console.log("Updating machine hand image: ", choice);
+  switch (choice) {
+    case rock:
+      machineHand.src = "../Recursos/Piedra.svg";
+      break;
+    case scissors:
+      machineHand.src = "../Recursos/Tijera.svg";
+      break;
+    case paper:
+      machineHand.src = "../Recursos/Papel.svg";
+  }
 }
 
 function determineWinner(userResult, machineResult) {
   if (userResult === machineResult) {
-    alert("Empate");
+    setTimeout(() => alert("Empate"), 500);
   } else if (
     (userResult === rock && machineResult === scissors) ||
     (userResult === scissors && machineResult === paper) ||
     (userResult === paper && machineResult === rock)
   ) {
-    alert("¡Buena elección 😸!");
+    setTimeout(() => alert("¡Buena elección 😸!"), 500);
     userScore++;
     updateScores();
   } else {
-    alert("¡Mala elección 🙀!");
+    setTimeout(() => alert("¡Mala elección 🙀!"), 500);
     machineScore++;
     updateScores();
   }
@@ -127,24 +157,6 @@ function disableGame() {
 function gameResult() {
   const machineChoice = handMachineSelection();
   determineWinner(userChoice, machineChoice);
-}
-
-function timerSound() {
-  const timerElement = document.getElementById("time");
-  const countDownTime = 5;
-  let timeRemaining = countDownTime;
-
-  const updateTimer = () => {
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
-    timerElement.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
-
-    if (timeRemaining > 0) {
-      timeRemaining--;
-    }
-  };
 }
 
 function soundsOfHands(choice) {
