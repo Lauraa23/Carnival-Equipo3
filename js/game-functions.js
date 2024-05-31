@@ -53,8 +53,7 @@ function handUserSelection() {
 }
 
 function showHandUserChoice(choice) {
-  const userHand = document.querySelector(".manoA");
-  console.log("Updating user hand image: ", choice);
+  const userHand = document.getElementById("manoA");
   switch (choice) {
     case rock:
       userHand.src = "../Recursos/Piedra.svg";
@@ -70,12 +69,13 @@ function showHandUserChoice(choice) {
 function processUserSelection(event, choice) {
   if (userScore < 3 && machineScore < 3) {
     userChoice = choice;
-    console.log("User choice: ", choice);
-    soundsOfHands(choice);
-    showHandUserChoice(choice);
     stopTimer();
     startTimer();
-    gameResult();
+    soundsOfHands(choice);
+    animateHands(function () {
+      showHandUserChoice(choice);
+      gameResult();
+    });
   }
 }
 
@@ -90,7 +90,7 @@ function handMachineSelection() {
 }
 
 function showHandMachineChoice(choice) {
-  const machineHand = document.querySelector(".manoB");
+  const machineHand = document.getElementById("manoB");
   console.log("Updating machine hand image: ", choice);
   switch (choice) {
     case rock:
@@ -157,7 +157,10 @@ function disableGame() {
 
 function gameResult() {
   const machineChoice = handMachineSelection();
-  determineWinner(userChoice, machineChoice);
+  animateHands(function () {
+    showHandMachineChoice(machineChoice);
+    determineWinner(userChoice, machineChoice);
+  });
 }
 
 function soundsOfHands(choice) {
@@ -171,6 +174,16 @@ function soundsOfHands(choice) {
     case paper:
       document.getElementById("soundPapel").play();
   }
+}
+
+function animateHands(callback) {
+  $("#manoA").animate({ left: "-=100px" }, 200, function () {
+    $("#manoB").animate({ left: "+=100px" }, 200, function () {
+      $("#manoA").animate({ left: "+=100px" }, 100, function () {
+        $("#manoB").animate({ left: "-=100px" }, 100, callback);
+      });
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
