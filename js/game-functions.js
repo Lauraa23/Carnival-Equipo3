@@ -84,6 +84,7 @@ function handMachineSelection() {
   const randomizerResult = Math.floor(Math.random() * possibleResult.length);
   const machineChoice = possibleResult[randomizerResult];
   console.log("Machine choice: ", machineChoice);
+  soundsOfHands(machineChoice);
   showHandMachineChoice(machineChoice);
   return machineChoice;
 }
