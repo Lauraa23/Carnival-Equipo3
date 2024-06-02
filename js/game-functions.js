@@ -10,9 +10,9 @@ const manoB = document.getElementById("manoB");
 
 function startTimer() {
   let time = 6;
-  clearInterval(timerId); 
+  clearInterval(timerId);
   timerId = setInterval(() => {
-    document.getElementById("endSound").play(); 
+    document.getElementById("endSound").play();
     time--;
     document.getElementById("time").textContent = `00:0${time}`;
     if (time <= 0) {
@@ -134,14 +134,78 @@ function roundFinalWinner() {
     disableGame();
     if (userScore === 3) {
       alert("¡Felicidades! Ganaste la ronda 😺");
+      launchConfetti();
     } else if (machineScore === 3) {
       alert("Lo siento, has perdido la ronda 😿");
+      launchPoop();
     }
     disableGame();
   }
 }
 
 // funcion lanza confetti
+function launchConfetti() {
+  const duration = 5000;
+
+  const intervalId = setInterval(createEmoji, 100);
+
+  setTimeout(() => clearInterval(intervalId), duration);
+
+  function createEmoji() {
+    const poop = document.createElement("div");
+    poop.className = "poop";
+    poop.innerText = "🎊";
+    poop.style.left = Math.random() * window.innerWidth + "px";
+    poop.style.top = "-50px";
+    document.body.appendChild(poop);
+
+    poop.animate(
+      [
+        { top: "-50px", opacity: 2 },
+        { top: "100vh", opacity: 0 },
+      ],
+      {
+        duration: duration,
+        easing: "linear",
+        fill: "forwards",
+      }
+    ).onfinish = () => poop.remove();
+  }
+}
+
+// fin
+
+//popos
+function launchPoop() {
+  const duration = 5000;
+
+  const intervalId = setInterval(createEmoji, 100);
+
+  setTimeout(() => clearInterval(intervalId), duration);
+
+  function createEmoji() {
+    const poop = document.createElement("div");
+    poop.className = "poop";
+    poop.innerText = "💩";
+    poop.style.left = Math.random() * window.innerWidth + "px";
+    poop.style.top = "-50px";
+    document.body.appendChild(poop);
+
+    poop.animate(
+      [
+        { top: "-50px", opacity: 2 },
+        { top: "100vh", opacity: 0 },
+      ],
+      {
+        duration: duration,
+        easing: "linear",
+        fill: "forwards",
+      }
+    ).onfinish = () => poop.remove();
+  }
+}
+
+//fin
 
 function disableGame() {
   const piedra = document.getElementById("piedra");
@@ -260,4 +324,11 @@ function resetHands() {
 document.addEventListener("DOMContentLoaded", () => {
   handUserSelection();
   startTimer();
+});
+
+export { handUserSelection };
+
+document.getElementById("reload").addEventListener("click", (_) => {
+  location.reload();
+  console.log("se ha reiniciado");
 });
