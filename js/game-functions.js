@@ -5,19 +5,18 @@ let userChoice = 0;
 let userScore = 0;
 let machineScore = 0;
 let timerId;
+const manoA = document.getElementById("manoA");
+const manoB = document.getElementById("manoB");
 
 function startTimer() {
   let time = 6;
+  clearInterval(timerId); 
   timerId = setInterval(() => {
+    document.getElementById("endSound").play(); 
     time--;
-
     document.getElementById("time").textContent = `00:0${time}`;
-
-    document.getElementById("endSound").play();
-
     if (time <= 0) {
       clearInterval(timerId);
-
       alert("¡Tiempo agotado! Has perdido el turno 😿");
       machineScore++;
       updateScores();
@@ -30,6 +29,7 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(timerId);
+  const endSound = document.getElementById("endSound");
   endSound.pause();
   endSound.currentTime = 0;
 }
@@ -66,32 +66,8 @@ function showHandUserChoice(choice) {
   }
 }
 
-function processUserSelection(event, choice) {
-  if (userScore < 3 && machineScore < 3) {
-    userChoice = choice;
-    stopTimer();
-    startTimer();
-    soundsOfHands(choice);
-    animateHands(function () {
-      showHandUserChoice(choice);
-      gameResult();
-    });
-  }
-}
-
-function handMachineSelection() {
-  const possibleResult = [rock, scissors, paper];
-  const randomizerResult = Math.floor(Math.random() * possibleResult.length);
-  const machineChoice = possibleResult[randomizerResult];
-  console.log("Machine choice: ", machineChoice);
-  soundsOfHands(machineChoice);
-  showHandMachineChoice(machineChoice);
-  return machineChoice;
-}
-
 function showHandMachineChoice(choice) {
   const machineHand = document.getElementById("manoB");
-  console.log("Updating machine hand image: ", choice);
   switch (choice) {
     case rock:
       machineHand.src = "../Recursos/Piedra.svg";
@@ -102,6 +78,30 @@ function showHandMachineChoice(choice) {
     case paper:
       machineHand.src = "../Recursos/Papel.svg";
   }
+}
+
+function processUserSelection(event, choice) {
+  if (userScore < 3 && machineScore < 3) {
+    userChoice = choice;
+    stopTimer();
+    resetHands();
+    animateHands().then(() => {
+      soundsOfHands(choice);
+      showHandUserChoice(choice);
+      const machineChoice = handMachineSelection();
+      showHandMachineChoice(machineChoice);
+      determineWinner(userChoice, machineChoice);
+      if (userScore < 3 && machineScore < 3) {
+        startTimer();
+      }
+    });
+  }
+}
+
+function handMachineSelection() {
+  const possibleResult = [rock, scissors, paper];
+  const randomizerResult = Math.floor(Math.random() * possibleResult.length);
+  return possibleResult[randomizerResult];
 }
 
 function determineWinner(userResult, machineResult) {
@@ -131,7 +131,7 @@ function updateScores() {
 function roundFinalWinner() {
   if (userScore === 3 || machineScore === 3) {
     stopTimer();
-
+    disableGame();
     if (userScore === 3) {
       alert("¡Felicidades! Ganaste la ronda 😺");
     } else if (machineScore === 3) {
@@ -155,12 +155,8 @@ function disableGame() {
   }
 }
 
-function gameResult() {
-  const machineChoice = handMachineSelection();
-  animateHands(function () {
-    showHandMachineChoice(machineChoice);
-    determineWinner(userChoice, machineChoice);
-  });
+function gameResult(machineChoice) {
+  determineWinner(userChoice, machineChoice);
 }
 
 function soundsOfHands(choice) {
@@ -176,19 +172,92 @@ function soundsOfHands(choice) {
   }
 }
 
-function animateHands(callback) {
-  $("#manoA").animate({ left: "-=100px" }, 200, function () {
-    $("#manoB").animate({ left: "+=100px" }, 200, function () {
-      $("#manoA").animate({ left: "+=100px" }, 100, function () {
-        $("#manoB").animate({ left: "-=100px" }, 100, callback);
-      });
-    });
+function animateHands() {
+  return new Promise((resolve) => {
+    manoA.animate(
+      [{ transform: "translateX(0)" }, { transform: "translateX(-100px)" }],
+      { duration: 200 }
+    );
+    manoB.animate(
+      [{ transform: "translateX(0)" }, { transform: "translateX(100px)" }],
+      { duration: 200 }
+    ).onfinish = function () {
+      manoA.animate(
+        [{ transform: "translateX(-100px)" }, { transform: "translateX(0)" }],
+        { duration: 100 }
+      );
+      manoB.animate(
+        [{ transform: "translateX(100px)" }, { transform: "translateX(0)" }],
+        { duration: 100 }
+      ).onfinish = function () {
+        manoA.animate(
+          [{ transform: "translateX(0)" }, { transform: "translateX(-100px)" }],
+          { duration: 200 }
+        );
+        manoB.animate(
+          [{ transform: "translateX(0)" }, { transform: "translateX(100px)" }],
+          { duration: 200 }
+        ).onfinish = function () {
+          manoA.animate(
+            [
+              { transform: "translateX(-100px)" },
+              { transform: "translateX(0)" },
+            ],
+            { duration: 100 }
+          );
+          manoB.animate(
+            [
+              { transform: "translateX(100px)" },
+              { transform: "translateX(0)" },
+            ],
+            { duration: 100 }
+          ).onfinish = function () {
+            manoA.animate(
+              [
+                { transform: "translateX(0)" },
+                { transform: "translateX(-100px)" },
+              ],
+              { duration: 200 }
+            );
+            manoB.animate(
+              [
+                { transform: "translateX(0)" },
+                { transform: "translateX(100px)" },
+              ],
+              { duration: 200 }
+            ).onfinish = function () {
+              manoA.animate(
+                [
+                  { transform: "translateX(-100px)" },
+                  { transform: "translateX(0)" },
+                ],
+                { duration: 100 }
+              );
+              manoB.animate(
+                [
+                  { transform: "translateX(100px)" },
+                  { transform: "translateX(0)" },
+                ],
+                { duration: 100 }
+              ).onfinish = function () {
+                resolve();
+              };
+            };
+          };
+        };
+      };
+    };
   });
+}
+
+function resetHands() {
+  const userHand = document.getElementById("manoA");
+  const machineHand = document.getElementById("manoB");
+  userHand.src = "../Recursos/Mano.svg";
+  machineHand.src = "../Recursos/Mano.svg";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   handUserSelection();
   startTimer();
 });
-
-export { handUserSelection };
