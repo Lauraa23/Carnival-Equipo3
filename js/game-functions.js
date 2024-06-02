@@ -136,38 +136,31 @@ function launchConfetti() {
 
 //popos
 function launchPoop() {
-  (function frame() {
-    // Crea el emoji de popo y lo lanza desde arriba
+  const duration = 5000;
+
+  const intervalId = setInterval(createEmoji, 100);
+
+  setTimeout(() => clearInterval(intervalId), duration);
+
+  function createEmoji() {
     const poop = document.createElement("div");
-    poop.classList.add("poop");
+    poop.className = "poop";
     poop.innerText = "💩";
-    poop.style.position = "fixed"; // Cambiado a 'fixed' para evitar scroll
     poop.style.left = Math.random() * window.innerWidth + "px";
     poop.style.top = "-50px";
     document.body.appendChild(poop);
 
-    const poopAnimation = poop.animate(
-      [
-        { top: "-50px", opacity: 1 },
-        { top: "100vh", opacity: 0 },
-      ],
+    poop.animate(
+      [{ top: "-50px", opacity: 2 }, { top: "100vh", opacity: 0 }],
       {
-        duration: 5000,
+        duration: duration,
         easing: "linear",
-        fill: "forwards",
+        fill: "forwards"
       }
-    );
-
-    poopAnimation.onfinish = () => {
-      poop.remove();
-    };
-
-    // Continúa lanzando popo si la animación no ha terminado
-    poopAnimation.oncancel = poopAnimation.onfinish; // Manejo para navegadores antiguos que no soportan onfinish
-
-    requestAnimationFrame(frame);
-  })();
+    ).onfinish = () => poop.remove();
+  }
 }
+
 //fin
 
 function disableGame() {
@@ -193,3 +186,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 export { handUserSelection };
+
+document.getElementById('reload').addEventListener('click', (_) => {
+  location.reload();
+  console.log('se ha reiniciado')
+})

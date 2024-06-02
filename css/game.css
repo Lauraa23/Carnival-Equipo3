@@ -134,6 +134,11 @@ h2{
 /* ANIMACIONES GAME*/
 /* .reiniciar:hover */
 
+#reload{
+  background-color: transparent;
+  border: none;
+}
+
 #reiniciar:hover {
   animation: spin 0.4s linear;
   cursor: pointer;
