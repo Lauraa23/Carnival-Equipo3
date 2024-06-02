@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alata&display=swap");
+
+* {
+  margin: 0;
+  font-family: "Alata", sans-serif;
+  font-size: 36px;
+}
+
+:root {
+  --building-color1: #f8eeec;
+  --building-color2: #f96b4f;
+}
+
+body {
+  background-color: var(--building-color1); /* tuve que poner el color de fondo directamente al body sino daba error en la página de instrucciones */
+  transition: 0.2s;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 141px;
+  z-index: 10;
+  transition: 0.2s;
+}
+
+#logoImage {
+  width: 50%;
+  max-width: 600px;
+  min-width: 360px;
+  margin: auto;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+  align-items: center;
+}
+
+.menuButton {
+  color: var(--building-color1);
+  background-color: var(--building-color2);
+  border-radius: 58px;
+  width: 50%;
+  min-width: 278px;
+  padding: 22px 0;
+  border: none;
+  margin-bottom: 15px;
+}
+
+.menuButton:hover {
+  cursor: pointer;
+  animation: jelly 0.5s;
+}
+
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+#bottomRightImage {
+  position: fixed;
+  bottom: -10%;
+  right: -15%;
+  transition: 0.3s ease-out;
+  z-index: -1;
+  animation: rotar 10s linear infinite;
+}
+
+@keyframes rotar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#estrellita,
+#estrellita1,
+#estrellita2 {
+  display: none;
+  
+}
+
+#topLeftImage {
+  display: flex;
+    position: absolute;
+    transform: rotate(200deg);
+    top: -10%;
+    left: -1%;
+    width: 153px;
+    z-index: -1;
+    animation: temblar 1s ease-in-out infinite;
+  }
+
+  @keyframes temblar {
+    0%,
+    40%,
+    100% {
+      transform: rotate(200deg);
+      transform-origin: 50% 50%;
+    }
+    10% {
+      transform: rotate(220deg);
+    }
+    20%,
+    40% {
+      transform: rotate(170deg);
+    }
+    30% {
+      transform: rotate(220deg);
+    }
+    50% {
+      transform: rotate(200deg);
+    }
+  }
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 1000px) {
+  body {
+    max-width: 1080px;
+    margin: auto;
+  }
+
+  .content {
+    margin-top: 70px;
+  }
+
+  #estrellita,
+  #estrellita1,
+  #estrellita2,
+  #bottomRightImage {
+    display: flex;
+  }
+
+  #estrellita {
+    position: fixed;
+    top: 50px;
+    right: 200px;
+    z-index: -1;
+    animation: agrandarDisminuir 2s infinite;
+  }
+
+  @keyframes agrandarDisminuir {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  #estrellita1 {
+    position: fixed;
+    top: 55%;
+    left: 11%;
+    z-index: -1;
+    animation: agrandarDisminuir 2s infinite;
+  }
+
+  #estrellita2 {
+    width: 58px;
+    position: fixed;
+    top: 50%;
+    left: 17%;
+    z-index: -1;
+    animation: agrandarDisminuir 2s infinite;
+    animation-delay: 1s;
+  }
+
+  @keyframes agrandarDisminuir {
+    0% {
+      transform: scale(0.5);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.5);
+    }
+  }
+
+  #bottomRightImage {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    z-index: -1;
+  }
+
+}
