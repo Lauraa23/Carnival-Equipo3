@@ -189,6 +189,6 @@ piedraElement.addEventListener('click', () => {
 papelElement.addEventListener('click', () => {
   soundPapel.currentTime = 0;
   soundPapel.play();
-});
+}); */
 
-export { handUserSelection };
+ export { handUserSelection };
