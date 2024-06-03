@@ -61,8 +61,7 @@ span {
   min-width: 102px;
   max-width: 135px;
   width: 30%;
-  /* animation: */
-  /* animation-duration: ;*/
+  position: relative;
 }
 
 .manoB {
@@ -71,8 +70,7 @@ span {
   min-width: 102px;
   max-width: 135px;
   width: 30%;
-  /* animation: */
-  /* animation-duration: ;*/
+  position: relative;
 }
 
 .cajaManos {
@@ -118,7 +116,7 @@ span {
   margin-bottom: 30px;
 }
 
-h2{
+h2 {
   font-family: "Alata", sans-serif;
 }
 /* ANIMACIONES ATRAS*/
@@ -133,6 +131,11 @@ h2{
 
 /* ANIMACIONES GAME*/
 /* .reiniciar:hover */
+
+#reload{
+  background-color: transparent;
+  border: none;
+}
 
 #reiniciar:hover {
   animation: spin 0.4s linear;
@@ -160,6 +163,25 @@ h2{
   cursor: pointer;
 }
 
+/*perder*/
+
+body {
+  overflow: hidden;
+}
+
+.poop {
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 25px);
+  font-size: 24px;
+}
+
+@keyframes fall {
+  to {
+    top: calc(100vh - 50px);
+  }
+}
+
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 1000px) {
@@ -183,9 +205,8 @@ h2{
   }
 }
 
-
 @media only screen and (max-height: 700px) {
-  .textoContador{
+  .textoContador {
     font-size: 30px;
     margin: 0 10px 15px 10px;
   }
@@ -202,13 +223,14 @@ h2{
   .cirluloFondo {
     min-width: 150px !important;
     width: 220px;
-}
-.manoA {
-  width: 120px;
-}
+  }
+  .manoA {
+    width: 120px;
+  }
 
   .manoB {
-  width: 120px;
+    width: 120px;
+  }
 }
 
-}
+

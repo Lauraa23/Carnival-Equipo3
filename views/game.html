@@ -15,12 +15,12 @@
       ><img src="../Recursos/Back.svg" alt="Botón Atrás" id="atras"
     /></a>
     <!-- añadí link a inicio-->
-    <a
+    <button id="reload"
       ><img
         src="../Recursos/Restart.svg"
         alt="Botón de Reinicio"
         id="reiniciar"
-    /></a>
+    /></button>
   </header>
   <body>
     <div class="scoreboard">
@@ -32,8 +32,8 @@
     </div>
     <div class="manosAnimacion">
       <!-- añadí una clase-->
-      <img class="manoA" src="../Recursos/Mano.svg" alt="" />
-      <img class="manoB" src="../Recursos/Mano.svg" alt="" />
+      <img id="manoA" class="manoA" src="../Recursos/Mano.svg" alt="" />
+      <img id="manoB" class="manoB" src="../Recursos/Mano.svg" alt="" />
       <img class="cirluloFondo" src="../Recursos/CirculoFondo.svg" alt="" />
     </div>
     <div class="cajaManos">
@@ -45,10 +45,33 @@
       <h2 id="time">00:05</h2>
       <!--Cambié el div por un h2-->
     </div>
+<<<<<<< HEAD
     <audio id="endSound" src="../Recursos/sonidos/cuenta regresiva.mp3" preload="auto"></audio>
     <audio id="soundTijera" src="../Recursos/sonidos/tijeras.mp3" preload="auto"></audio>
     <audio id="soundPiedra" src="../Recursos/sonidos/rocks-and-gravel-slide-1-204994.mp3" preload="auto"></audio>
     <audio id="soundPapel" src="../Recursos/sonidos/papel.mp3" preload="auto"></audio>
+=======
+    <audio
+      id="endSound"
+      src="../Recursos/sonidos/cuenta regresiva.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="soundTijera"
+      src="../Recursos/sonidos/tijeras.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="soundPiedra"
+      src="../Recursos/sonidos/rocks-and-gravel-slide-1-204994.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="soundPapel"
+      src="../Recursos/sonidos/papel.mp3"
+      preload="auto"
+    ></audio>
+>>>>>>> 682669c4e371cd08c2be268e26c68b94e5427357
     <script src="../js/game-functions.js" type="module"></script>
   </body>
 </html>

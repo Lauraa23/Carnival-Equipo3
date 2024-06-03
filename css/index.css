@@ -70,47 +70,9 @@ body {
   }
 }
 
-#topLeftImage {
-  background-color: transparent;
-  position: absolute;
-  transform: rotate(200deg);
-  top: -10%;
-  left: 0%;
-  width: 150px;
-  z-index: 0;
-  transition: 0.1s;
-  animation: tiembla 0.5s ease-in-out infinite;
-}
-
-@keyframes tiembla {
-  0%,
-  100% {
-    transform: rotate(200deg);
-  }
-  10%,
-  60% {
-    transform: rotate(210deg);
-  }
-  20%,
-  70% {
-    transform: rotate(190deg);
-  }
-  30%,
-  80% {
-    transform: rotate(205deg);
-  }
-  40%,
-  90% {
-    transform: rotate(195deg);
-  }
-  50% {
-    transform: rotate(200deg);
-  }
-}
-
 #bottomRightImage {
   position: fixed;
-  bottom: -15%;
+  bottom: -10%;
   right: -15%;
   transition: 0.3s ease-out;
   z-index: -1;
@@ -133,54 +95,8 @@ body {
   
 }
 
-#garabato2 {
-  background-color: transparent;
-  position: fixed;
-  bottom: -10%;
-  right: -5%;
-  width: 150px;
-  z-index: 1;
-  transition: 0.3s;
-  animation: temblar 1s ease-in-out infinite;
-
-}
-
-@keyframes temblar {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10%,
-  30%,
-  50%,
-  70% {
-    transform: rotate(10deg);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: rotate(-10deg);
-  }
-  90% {
-    transform: rotate(0deg);
-  }
-}
-
-/* MEDIA QUERIES */
-
-@media only screen and (min-width: 1000px) {
-  body {
-    max-width: 1080px;
-    margin: auto;
-  }
-
-  .content {
-    margin-top: 70px;
-  }
-
-  #topLeftImage {
-    display: flex;
+#topLeftImage {
+  display: flex;
     position: absolute;
     transform: rotate(200deg);
     top: -10%;
@@ -210,6 +126,18 @@ body {
     50% {
       transform: rotate(200deg);
     }
+  }
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 1000px) {
+  body {
+    max-width: 1080px;
+    margin: auto;
+  }
+
+  .content {
+    margin-top: 70px;
   }
 
   #estrellita,
@@ -246,7 +174,6 @@ body {
     z-index: -1;
     animation: agrandarDisminuir 2s infinite;
   }
-/* Eliminé una animación porque estaba repetida */
 
   #estrellita2 {
     width: 58px;
@@ -275,15 +202,6 @@ body {
     bottom: 10%;
     right: 5%;
     z-index: -1;
-    animation: rotar 10s linear infinite;
   }
 
-  @keyframes rotar {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
 }

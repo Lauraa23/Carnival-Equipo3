@@ -225,28 +225,6 @@ p {
     right: -3%;
     width: 305px;
     z-index: -1;
-    animation: temblar2 1s ease-in-out infinite;
-  }
+}
 
-  @keyframes temblar2 {
-    0%,
-    100% {
-      transform: rotate(0deg);
-    }
-    10%,
-    30%,
-    50%,
-    70% {
-      transform: rotate(10deg);
-    }
-    20%,
-    40%,
-    60%,
-    80% {
-      transform: rotate(-10deg);
-    }
-    90% {
-      transform: rotate(0deg);
-    }
-  }
 }
